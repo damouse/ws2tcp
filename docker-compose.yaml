@@ -1,0 +1,7 @@
+version: "2.2"
+services:
+  wsproxy:
+    build: 
+      context: .
+    network_mode: host
+    command: ws-to-tcp --from 9001 --to 1882
