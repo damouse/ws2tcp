@@ -1,9 +1,6 @@
-# FROM node:10.10.0-alpine
-FROM resin/armhf-alpine-node:0.10.22-slim
+FROM node:10.10.0-alpine
 
-# You can probably
-COPY qemu-arm-static /usr/bin/qemu-arm-static
+RUN npm install node-websockify@1.0.2
+COPY proxy.js proxy.js
 
-# Just doesn't work without this.
-RUN npm config set strict-ssl false && \
-    npm install -g ws-to-tcp@1.0.0
+CMD echo 'Starting Proxy'; node proxy.js
